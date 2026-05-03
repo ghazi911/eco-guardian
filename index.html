@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>سلة المهملات الذكية | مشروع ريادة الأعمال</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2d1b69 100%);
+            min-height: 100vh;
+            color: #f1f5f9;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1b4b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            border-radius: 10px;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: sticky;
+            top: 90px;
+            z-index: 99;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(16, 185, 129, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border-radius: 40px;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #10b981;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .hero-animation {
+            position: relative;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bin-3d {
+            perspective: 1000px;
+        }
+
+        .bin-body {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(16,185,129,0.1));
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .bin-camera {
+            background: #1e1e1e;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .bin-compartments {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .compartment {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .compartment i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .compartment.plastic i { color: #3b82f6; }
+        .compartment.paper i { color: #f59e0b; }
+        .compartment.metal i { color: #9ca3af; }
+
+        .bin-wheels {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            color: #94a3b8;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ========== SIMULATOR STYLES ========== */
+        .simulator-section {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.15));
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .simulator-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sim-control-panel {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 25px;
+            padding: 1.5rem;
+        }
+
+        .trash-selector {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .trash-btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .trash-btn.selected {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.2);
+            transform: scale(1.02);
+        }
+
+        .trash-btn i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .trash-btn.plastic i { color: #3b82f6; }
+        .trash-btn.paper i { color: #f59e0b; }
+        .trash-btn.metal i { color: #9ca3af; }
+        .trash-btn.glass i { color: #a78bfa; }
+
+        .control-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sim-stats-panel {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 25px;
+            padding: 1.5rem;
+        }
+
+        .sim-bins-status {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .bin-status {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .bin-level {
+            height: 100px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bin-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            transition: height 0.5s ease;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .bin-count {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #10b981;
+            margin: 0.5rem 0;
+        }
+
+        .sim-visual {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 25px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .camera-feed {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .camera-feed i {
+            font-size: 3rem;
+            color: #94a3b8;
+        }
+
+        .ai-analysis {
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .moving-bin {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            transition: transform 0.3s;
+        }
+
+        .moving-bin.moving {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .compartment-door {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            transition: all 0.3s;
+        }
+
+        .compartment-door.opened {
+            background: rgba(16, 185, 129, 0.3);
+            transform: scaleX(1.05);
+        }
+
+        .progress-bar-sim {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill-sim {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            transition: width 0.3s;
+            border-radius: 10px;
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            margin: 0.5rem 0;
+        }
+
+        .result-badge.success {
+            background: rgba(16, 185, 129, 0.3);
+            color: #10b981;
+        }
+
+        .steps-section, .components-grid, .code-section, .results-table, .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .component-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            border-color: #10b981;
+        }
+
+        .component-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .component-icon i {
+            font-size: 1.8rem;
+            color: #10b981;
+        }
+
+        .code-section pre {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            color: #10b981;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 1.5rem;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: #10b981;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; padding: 2rem; }
+            .simulator-container { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.8rem; }
+            .trash-selector { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-trash-alt"></i> سلة المهملات الذكية</h1>
+        <p>فرز النفايات تلقائياً باستخدام الذكاء الاصطناعي والروبوتات | مشروع ريادة الأعمال</p>
+    </header>
+
+    <div class="nav-bar">
+        <div class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#how-it-works">كيف يعمل</a>
+            <a href="#components">المكونات</a>
+            <a href="#simulator">المحاكاة</a>
+            <a href="#results">النتائج</a>
+            <a href="#contact">تواصل</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div id="home" class="hero">
+            <div class="hero-content">
+                <h2>ثورة في إدارة النفايات</h2>
+                <p>سلة ذكية تتعرف على نوع النفاية باستخدام الذكاء الاصطناعي، وتفرزها تلقائياً في الحجرة المناسبة. توفر الوقت والجهد وتساهم في حماية البيئة.</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-number">92%</div><div class="stat-label">دقة التصنيف</div></div>
+                    <div class="stat"><div class="stat-number">4</div><div class="stat-label">أنواع النفايات</div></div>
+                    <div class="stat"><div class="stat-number">3</div><div class="stat-label">ثواني للمعالجة</div></div>
+                </div>
+            </div>
+            <div class="hero-animation">
+                <div class="bin-3d">
+                    <div class="bin-body">
+                        <div class="bin-camera"><i class="fas fa-camera" style="color: white;"></i></div>
+                        <div class="bin-compartments">
+                            <div class="compartment plastic"><i class="fas fa-bottle-water"></i><span>بلاستيك</span></div>
+                            <div class="compartment paper"><i class="fas fa-file-alt"></i><span>ورق</span></div>
+                            <div class="compartment metal"><i class="fas fa-cube"></i><span>معدن</span></div>
+                        </div>
+                        <div class="bin-wheels"><i class="fas fa-circle"></i><i class="fas fa-circle"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div id="how-it-works" class="steps-section">
+            <h2 class="section-title" style="margin-top: 0;">🤖 كيف تعمل السلة الذكية؟</h2>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-number">1</div><i class="fas fa-camera" style="font-size: 2rem; color: #10b981;"></i><h3>التقاط الصورة</h3><p>الكاميرا تلتقط صورة للنفاية</p></div>
+                <div class="step-card"><div class="step-number">2</div><i class="fas fa-brain" style="font-size: 2rem; color: #10b981;"></i><h3>تحليل الذكاء الاصطناعي</h3><p>نموذج AI يحدد نوع النفاية</p></div>
+                <div class="step-card"><div class="step-number">3</div><i class="fas fa-cogs" style="font-size: 2rem; color: #10b981;"></i><h3>التوجيه للحجرة</h3><p>السيرفو يوجه النفاية للحجرة المناسبة</p></div>
+                <div class="step-card"><div class="step-number">4</div><i class="fas fa-chart-line" style="font-size: 2rem; color: #10b981;"></i><h3>تحديث الإحصائيات</h3><p>تسجيل العداد وعرض البيانات</p></div>
+            </div>
+        </div>
+
+        <!-- Components -->
+        <div id="components">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> المكونات التقنية</h2>
+            <div class="components-grid">
+                <div class="component-card"><div class="component-icon"><i class="fab fa-raspberry-pi"></i></div><h3>Raspberry Pi 4</h3><p>الوحدة المركزية للمعالجة</p><div class="component-price">💰 45 دينار</div></div>
+                <div class="component-card"><div class="component-icon"><i class="fas fa-camera"></i></div><h3>كاميرا Raspberry</h3><p>لالتقاط صور النفايات</p><div class="component-price">💰 18 دينار</div></div>
+                <div class="component-card"><div class="component-icon"><i class="fas fa-microchip"></i></div><h3>TensorFlow / OpenCV</h3><p>مكتبات الذكاء الاصطناعي</p><div class="component-price">💰 مجاني</div></div>
+                <div class="component-card"><div class="component-icon"><i class="fas fa-motorcycle"></i></div><h3>محركات DC + L298N</h3><p>للحركة الذاتية</p><div class="component-price">💰 20 دينار</div></div>
+                <div class="component-card"><div class="component-icon"><i class="fas fa-charging-station"></i></div><h3>بطارية ليثيوم 12V</h3><p>تشغيل لمدة 4 ساعات</p><div class="component-price">💰 25 دينار</div></div>
+                <div class="component-card"><div class="component-icon"><i class="fas fa-waveform"></i></div><h3>مستشعرات مسافة</h3><p>لتجنب العوائق</p><div class="component-price">💰 5 دنانير</div></div>
+            </div>
+        </div>
+
+        <!-- ========== SIMULATOR SECTION (NEW) ========== -->
+        <div id="simulator" class="simulator-section">
+            <h2 class="section-title" style="margin-top: 0;"><i class="fas fa-laptop-code"></i> محاكاة السلة الذكية</h2>
+            <p style="text-align: center;">جرب السلة الذكية الآن! اختر نوع النفاية وشاهد كيف تعمل</p>
+            
+            <div class="simulator-container">
+                <!-- Control Panel -->
+                <div class="sim-control-panel">
+                    <h3><i class="fas fa-hand-pointer"></i> اختر النفاية</h3>
+                    <div class="trash-selector" id="trashSelector">
+                        <div class="trash-btn plastic" data-type="plastic" data-name="بلاستيك">
+                            <i class="fas fa-bottle-water"></i>
+                            <span>بلاستيك</span>
+                        </div>
+                        <div class="trash-btn paper" data-type="paper" data-name="ورق">
+                            <i class="fas fa-file-alt"></i>
+                            <span>ورق</span>
+                        </div>
+                        <div class="trash-btn metal" data-type="metal" data-name="معدن">
+                            <i class="fas fa-cube"></i>
+                            <span>معدن</span>
+                        </div>
+                        <div class="trash-btn glass" data-type="glass" data-name="زجاج">
+                            <i class="fas fa-wine-bottle"></i>
+                            <span>زجاج</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-buttons">
+                        <button class="btn btn-primary" id="classifyBtn" onclick="classifyTrash()">
+                            <i class="fas fa-microchip"></i> تصنيف النفاية
+                        </button>
+                        <button class="btn btn-secondary" id="autoBtn" onclick="autoMode()">
+                            <i class="fas fa-play"></i> تشغيل تلقائي
+                        </button>
+                        <button class="btn btn-secondary" id="resetSimBtn" onclick="resetSimulation()">
+                            <i class="fas fa-sync-alt"></i> إعادة تعيين
+                        </button>
+                    </div>
+                    
+                    <div class="ai-analysis" id="aiAnalysis">
+                        <div class="progress-bar-sim">
+                            <div class="progress-fill-sim" id="aiProgress" style="width: 0%;"></div>
+                        </div>
+                        <div id="aiResult" style="text-align: center;">
+                            <i class="fas fa-microchip"></i> انتظر اختيار النفاية
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual Panel -->
+                <div class="sim-visual-panel">
+                    <div class="sim-visual">
+                        <div class="camera-feed" id="cameraFeed">
+                            <i class="fas fa-camera" style="font-size: 2rem;"></i>
+                            <p id="cameraText">في انتظار النفاية...</p>
+                        </div>
+                        
+                        <div class="moving-bin" id="movingBin">
+                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-arrow-right" id="moveArrow" style="opacity: 0;"></i>
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        
+                        <div id="doorStatus">
+                            <div class="compartment-door" id="doorPlastic">🚪 حجرة البلاستيك</div>
+                            <div class="compartment-door" id="doorPaper">🚪 حجرة الورق</div>
+                            <div class="compartment-door" id="doorMetal">🚪 حجرة المعدن</div>
+                            <div class="compartment-door" id="doorGlass">🚪 حجرة الزجاج</div>
+                        </div>
+                        
+                        <div id="resultMessage" class="result-badge" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats Panel -->
+            <div class="sim-stats-panel" style="margin-top: 1.5rem;">
+                <h3 style="text-align: center;"><i class="fas fa-chart-bar"></i> إحصائيات الفرز</h3>
+                <div class="sim-bins-status">
+                    <div class="bin-status">
+                        <i class="fas fa-bottle-water" style="color: #3b82f6;"></i>
+                        <h4>بلاستيك</h4>
+                        <div class="bin-level">
+                            <div class="bin-fill" id="fillPlastic" style="height: 0%;"></div>
+                        </div>
+                        <div class="bin-count" id="countPlastic">0</div>
+                    </div>
+                    <div class="bin-status">
+                        <i class="fas fa-file-alt" style="color: #f59e0b;"></i>
+                        <h4>ورق</h4>
+                        <div class="bin-level">
+                            <div class="bin-fill" id="fillPaper" style="height: 0%;"></div>
+                        </div>
+                        <div class="bin-count" id="countPaper">0</div>
+                    </div>
+                    <div class="bin-status">
+                        <i class="fas fa-cube" style="color: #9ca3af;"></i>
+                        <h4>معدن</h4>
+                        <div class="bin-level">
+                            <div class="bin-fill" id="fillMetal" style="height: 0%;"></div>
+                        </div>
+                        <div class="bin-count" id="countMetal">0</div>
+                    </div>
+                    <div class="bin-status">
+                        <i class="fas fa-wine-bottle" style="color: #a78bfa;"></i>
+                        <h4>زجاج</h4>
+                        <div class="bin-level">
+                            <div class="bin-fill" id="fillGlass" style="height: 0%;"></div>
+                        </div>
+                        <div class="bin-count" id="countGlass">0</div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <strong>الإجمالي: </strong><span id="totalCount">0</span> قطعة نفاية
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="results">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> نتائج التجارب</h2>
+            <div class="results-table">
+                <table>
+                    <thead><tr><th>نوع النفاية</th><th>عدد العينات</th><th>النجاح</th><th>الدقة</th></tr></thead>
+                    <tbody>
+                        <tr><td>🥤 بلاستيك</td><td>30</td><td>28</td><td style="color:#10b981">93%</td></tr>
+                        <tr><td>📄 ورق</td><td>25</td><td>23</td><td style="color:#10b981">92%</td></tr>
+                        <tr><td>🥫 معدن</td><td>25</td><td>22</td><td style="color:#10b981">88%</td></tr>
+                        <tr><td>🍾 زجاج</td><td>20</td><td>18</td><td style="color:#10b981">90%</td></tr>
+                        <tr style="background: rgba(16,185,129,0.1);"><td><strong>الإجمالي</strong></td><td><strong>100</strong></td><td><strong>91</strong></td><td><strong style="color:#f59e0b">91%</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div id="contact" class="contact-section">
+            <h2><i class="fas fa-envelope"></i> تواصل معنا</h2>
+            <p>للاستفسارات أو للمشاركة في المشروع</p>
+            <div class="contact-info">
+                <div class="contact-card"><i class="fas fa-user-graduate"></i><h3>غازي مؤمني</h3><p>مطور المشروع</p></div>
+                <div class="contact-card"><i class="fas fa-envelope"></i><h3>البريد الإلكتروني</h3><p>ghazi@smartbin.com</p></div>
+                <div class="contact-card"><i class="fas fa-phone"></i><h3>الهاتف</h3><p>+962 7X XXX XXXX</p></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-trash-alt"></i> سلة المهملات الذكية - مشروع ريادة الأعمال 2026</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem;">إعداد الطالب: غازي مؤمني | الأردن</p>
+    </footer>
+
+    <script>
+        // Simulation Data
+        let selectedTrash = null;
+        let stats = {
+            plastic: 0,
+            paper: 0,
+            metal: 0,
+            glass: 0
+        };
+        let isProcessing = false;
+        let autoInterval = null;
+        
+        // Trash types mapping to compartments
+        const trashMapping = {
+            plastic: { name: 'بلاستيك', compartment: 'plastic', icon: 'fa-bottle-water', doorId: 'doorPlastic' },
+            paper: { name: 'ورق', compartment: 'paper', icon: 'fa-file-alt', doorId: 'doorPaper' },
+            metal: { name: 'معدن', compartment: 'metal', icon: 'fa-cube', doorId: 'doorMetal' },
+            glass: { name: 'زجاج', compartment: 'glass', icon: 'fa-wine-bottle', doorId: 'doorGlass' }
+        };
+        
+        // AI Accuracy by trash type (based on real results)
+        const accuracyMap = {
+            plastic: 93,
+            paper: 92,
+            metal: 88,
+            glass: 90
+        };
+        
+        // Select trash button
+        document.querySelectorAll('.trash-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (isProcessing) return;
+                document.querySelectorAll('.trash-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedTrash = this.dataset.type;
+                document.getElementById('cameraText').innerHTML = `📷 تم اختيار: ${this.dataset.name}`;
+                document.getElementById('aiResult').innerHTML = `<i class="fas fa-microchip"></i> جاهز للتصنيف - اخترت ${this.dataset.name}`;
+                document.getElementById('resultMessage').innerHTML = '';
+                // Close all doors
+                closeAllDoors();
+            });
+        });
+        
+        function closeAllDoors() {
+            document.querySelectorAll('.compartment-door').forEach(door => {
+                door.classList.remove('opened');
+            });
+        }
+        
+        function animateProgress(callback) {
+            const progressBar = document.getElementById('aiProgress');
+            let width = 0;
+            const interval = setInterval(() => {
+                width += 10;
+                progressBar.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(interval);
+                    if (callback) callback();
+                }
+            }, 100);
+        }
+        
+        function animateMovement(callback) {
+            const movingBin = document.getElementById('movingBin');
+            const arrow = document.getElementById('moveArrow');
+            movingBin.classList.add('moving');
+            arrow.style.opacity = '1';
+            setTimeout(() => {
+                arrow.style.opacity = '0';
+                movingBin.classList.remove('moving');
+                if (callback) callback();
+            }, 600);
+        }
+        
+        function openCompartmentDoor(compartment) {
+            closeAllDoors();
+            const doorMap = {
+                plastic: 'doorPlastic',
+                paper: 'doorPaper', 
+                metal: 'doorMetal',
+                glass: 'doorGlass'
+            };
+            const doorId = doorMap[compartment];
+            if (doorId) {
+                document.getElementById(doorId).classList.add('opened');
+                setTimeout(() => {
+                    document.getElementById(doorId).classList.remove('opened');
+                }, 1500);
+            }
+        }
+        
+        function updateStatsAndUI() {
+            document.getElementById('countPlastic').textContent = stats.plastic;
+            document.getElementById('countPaper').textContent = stats.paper;
+            document.getElementById('countMetal').textContent = stats.metal;
+            document.getElementById('countGlass').textContent = stats.glass;
+            
+            // Update fill levels (max 30 items = 100%)
+            document.getElementById('fillPlastic').style.height = Math.min((stats.plastic / 30) * 100, 100) + '%';
+            document.getElementById('fillPaper').style.height = Math.min((stats.paper / 30) * 100, 100) + '%';
+            document.getElementById('fillMetal').style.height = Math.min((stats.metal / 30) * 100, 100) + '%';
+            document.getElementById('fillGlass').style.height = Math.min((stats.glass / 30) * 100, 100) + '%';
+            
+            const total = stats.plastic + stats.paper + stats.metal + stats.glass;
+            document.getElementById('totalCount').textContent = total;
+            
+            // Check if any bin is full
+            if (stats.plastic >= 30) alert('⚠️ حجرة البلاستيك ممتلئة! يرجى تفريغها.');
+            if (stats.paper >= 30) alert('⚠️ حجرة الورق ممتلئة! يرجى تفريغها.');
+            if (stats.metal >= 30) alert('⚠️ حجرة المعدن ممتلئة! يرجى تفريغها.');
+            if (stats.glass >= 30) alert('⚠️ حجرة الزجاج ممتلئة! يرجى تفريغها.');
+        }
+        
+        function classifyTrash() {
+            if (isProcessing) {
+                alert('الرجاء الانتظار، السلة تعمل حالياً...');
+                return;
+            }
+            if (!selectedTrash) {
+                alert('الرجاء اختيار نوع النفاية أولاً!');
+                return;
+            }
+            
+            isProcessing = true;
+            const trashType = selectedTrash;
+            const accuracy = accuracyMap[trashType];
+            const success = Math.random() * 100 < accuracy;
+            
+            // Update AI analysis text
+            document.getElementById('aiResult').innerHTML = `<i class="fas fa-microchip"></i> جاري تحليل الصورة...`;
+            
+            animateProgress(() => {
+                if (success) {
+                    const mapping = trashMapping[trashType];
+                    document.getElementById('aiResult').innerHTML = `<i class="fas fa-check-circle" style="color: #10b981;"></i> ✅ تم التصنيف: ${mapping.name} (الثقة: ${accuracy}%)`;
+                    document.getElementById('resultMessage').innerHTML = `<span style="color: #10b981;">✅ تم تصنيف النفاية كـ ${mapping.name} بنسبة ثقة ${accuracy}%</span>`;
+                    
+                    animateMovement(() => {
+                        openCompartmentDoor(mapping.compartment);
+                        // Update stats
+                        if (trashType === 'plastic') stats.plastic++;
+                        else if (trashType === 'paper') stats.paper++;
+                        else if (trashType === 'metal') stats.metal++;
+                        else if (trashType === 'glass') stats.glass++;
+                        updateStatsAndUI();
+                        document.getElementById('cameraText').innerHTML = `📷 تم فرز ${mapping.name} بنجاح!`;
+                        setTimeout(() => {
+                            document.getElementById('cameraText').innerHTML = `في انتظار النفاية التالية...`;
+                            document.getElementById('resultMessage').innerHTML = '';
+                        }, 2000);
+                        isProcessing = false;
+                    });
+                } else {
+                    document.getElementById('aiResult').innerHTML = `<i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i> ❌ فشل التصنيف! حاول مرة أخرى.`;
+                    document.getElementById('resultMessage').innerHTML = `<span style="color: #ef4444;">❌ لم يتم التعرف على النفاية بدقة. يرجى المحاولة مرة أخرى.</span>`;
+                    setTimeout(() => {
+                        document.getElementById('resultMessage').innerHTML = '';
+                        isProcessing = false;
+                    }, 2000);
+                }
+                setTimeout(() => {
+                    document.getElementById('aiProgress').style.width = '0%';
+                }, 500);
+            });
+        }
+        
+        function autoMode() {
+            if (autoInterval) {
+                clearInterval(autoInterval);
+                autoInterval = null;
+                document.getElementById('autoBtn').innerHTML = '<i class="fas fa-play"></i> تشغيل تلقائي';
+                document.getElementById('autoBtn').style.background = 'rgba(255, 255, 255, 0.1)';
+                return;
+            }
+            
+            const trashTypes = ['plastic', 'paper', 'metal', 'glass'];
+            let index = 0;
+            
+            // Select first trash type
+            const firstBtn = document.querySelector(`.trash-btn[data-type="${trashTypes[0]}"]`);
+            if (firstBtn) firstBtn.click();
+            
+            autoInterval = setInterval(() => {
+                index = (index + 1) % trashTypes.length;
+                const btn = document.querySelector(`.trash-btn[data-type="${trashTypes[index]}"]`);
+                if (btn) btn.click();
+                setTimeout(() => {
+                    classifyTrash();
+                }, 500);
+            }, 3000);
+            
+            document.getElementById('autoBtn').innerHTML = '<i class="fas fa-stop"></i> إيقاف التلقائي';
+            document.getElementById('autoBtn').style.background = 'rgba(239, 68, 68, 0.5)';
+        }
+        
+        function resetSimulation() {
+            if (autoInterval) {
+                clearInterval(autoInterval);
+                autoInterval = null;
+                document.getElementById('autoBtn').innerHTML = '<i class="fas fa-play"></i> تشغيل تلقائي';
+                document.getElementById('autoBtn').style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+            stats = { plastic: 0, paper: 0, metal: 0, glass: 0 };
+            selectedTrash = null;
+            isProcessing = false;
+            updateStatsAndUI();
+            closeAllDoors();
+            document.querySelectorAll('.trash-btn').forEach(b => b.classList.remove('selected'));
+            document.getElementById('cameraText').innerHTML = 'في انتظار النفاية...';
+            document.getElementById('aiResult').innerHTML = '<i class="fas fa-microchip"></i> انتظر اختيار النفاية';
+            document.getElementById('resultMessage').innerHTML = '';
+            document.getElementById('aiProgress').style.width = '0%';
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
